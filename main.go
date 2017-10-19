@@ -14,6 +14,8 @@ import (
 )
 
 var db *sql.DB
+var dirTemplates string
+var dirStatic string
 
 func main() {
 	if len(os.Args) < 2 {
@@ -38,6 +40,8 @@ func main() {
 			serveUsage()
 			return
 		}
+		dirTemplates = os.Args[3]
+		dirStatic = os.Args[4]
 		indexHttps := 0
 		indexHttpsLe := 0
 		indexInv := 0
@@ -82,9 +86,7 @@ func main() {
 				log.Fatal(err)
 			}
 		}
-		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("Hello world"))		
-		})
+		http.HandleFunc("/", indexHandler)
 		fs := http.FileServer(http.Dir(os.Args[4]))
 		http.Handle("/static/", http.StripPrefix("/static/", fs))
 		if indexHttpsLe > 0 {
