@@ -10,6 +10,7 @@ import (
 	"golang.org/x/crypto/acme/autocert"
 	"github.com/wheerdam/netutil"
 	"github.com/wheerdam/inventory"	
+	"github.com/icza/session"
 	//"bbi/inventory"
 )
 
@@ -112,6 +113,8 @@ func main() {
 				log.Fatal("ListenAndServeTLS: ", err)
 			}
 		} else {
+			session.Global.Close()
+			session.Global = session.NewCookieManagerOptions(session.NewInMemStore(), &session.CookieMngrOptions{AllowHTTP: true})
 			err := http.ListenAndServe(":80", nil)
 			if err != nil {
 				log.Fatal("ListenAndServe: ", err)
