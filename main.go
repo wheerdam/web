@@ -102,11 +102,13 @@ func main() {
 					GetCertificate: certManager.GetCertificate,
 				},
 			}
+			go http.ListenAndServe(":80", http.HandlerFunc(redirectHTTP))
 			err := server.ListenAndServeTLS("", "")
 			if err != nil {
 				log.Fatal("ListenAndServeTLS: ", err)
 			}
 		} else if indexHttps > 0 {
+			go http.ListenAndServe(":80", http.HandlerFunc(redirectHTTP))
 			err := http.ListenAndServeTLS(":443", os.Args[indexHttps+1], 
 					os.Args[indexHttps+2], nil)
 			if err != nil {
