@@ -89,7 +89,7 @@ func main() {
 		}
 		http.HandleFunc("/", indexHandler)
 		fs := http.FileServer(http.Dir(os.Args[4]))
-		http.Handle("/static/", http.StripPrefix("/static/", fs))
+		http.Handle("/s/", http.StripPrefix("/s/", fs))
 		if indexHttpsLe > 0 {
 			certManager := autocert.Manager{
 				Prompt:     autocert.AcceptTOS,
