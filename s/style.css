@@ -1,0 +1,46 @@
+body {
+	background-color: #000;
+	color: #ff7b00;
+}
+
+a:link {
+    color: #ff9e00;
+}
+
+a:visited {
+    color: #ff9e00;
+}
+
+/* mouse over link */
+a:hover {
+    color: #ffffff;
+}
+
+/* selected link */
+a:active {
+    color: #ffffff;
+}
+
+div.container {
+	margin: 0 auto;
+	text-align: left;
+}
+
+@media only screen and (min-width: 800px) {
+	div.center {
+		text-align: center;
+		width: 100%;
+	}
+
+	div.container {
+		width: 750px;
+	}
+
+	img.optimized {
+		width: 600px;
+	}
+
+	img.optimized-500 {
+		width: 500px;
+	}
+}

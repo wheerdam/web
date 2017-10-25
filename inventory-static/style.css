@@ -10,7 +10,6 @@ div.container {
 	text-align: left;
 }
 
-
 @media only screen and (min-width: 800px) {
 	div.center {
 		text-align: center;
@@ -28,8 +27,6 @@ div.container {
 	img.optimized-500 {
 		width: 500px;
 	}
-
-	
 }
 
 body {
